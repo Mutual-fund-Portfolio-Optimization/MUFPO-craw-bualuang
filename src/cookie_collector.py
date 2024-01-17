@@ -20,8 +20,3 @@ def cookie(base_url: str) -> str:
     cookie = get_cookie(driver, base_url)
     driver.quit()
     return cookie
-
-
-if __name__ == '__main__':
-    cookie_string = cookie(BASE_URL)
-    print(cookie_string)

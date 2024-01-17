@@ -1,10 +1,11 @@
 # MUFPO-craw-bualuang
 
 ### Tested on:
-version:
+Version:
 - python: 3.9.6
 - MacOS: 13.5
-selenium:
+  
+Selenium:
   - Chrome: default (120)
   - Firefox: ?
   - Edge: ?

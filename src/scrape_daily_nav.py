@@ -107,7 +107,7 @@ def split_commas(x) -> List[str]:
     
 def get_values(x) -> BaseRow:
     try:
-        return tuple(map(lambda y: y[y.find(':')+1:], x))
+        return tuple(map(lambda y: y[y.find(':')+1:], x)) # TODO
     except Exception as error:
         print(error, f'cannot get value of {x} function: get_values')
         raise error
@@ -141,7 +141,7 @@ def define_data_type(row: BaseRow) -> DailyNav:
     ]
 
     # Apply the type conversions using map
-    daily_nav: DailyNav = tuple(map(lambda x: x[0](x[1]), zip(types, row)))
+    daily_nav: DailyNav = tuple(map(lambda x: x[0](x[1]), zip(types, row))) # TODO
     return daily_nav
 
 def concat_funds(list1, list2):

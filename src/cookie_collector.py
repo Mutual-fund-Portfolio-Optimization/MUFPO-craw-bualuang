@@ -1,11 +1,14 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.chrome.options import Options
 
 
 
 def create_chrome_driver():
-    return webdriver.Chrome()
+    options = Options()
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+    return webdriver.Chrome(chrome_options=options)
 
 def get_cookie(driver, url: str):
     driver.get(url)

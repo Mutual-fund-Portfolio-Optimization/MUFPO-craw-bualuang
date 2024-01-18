@@ -29,7 +29,7 @@ def upload_file_to_s3(s3_client, bucket_name, file_path):
 def upload_file_functional():
     s3_client = create_s3_client()
     now = datetime.datetime.now()
-    upload_func = partial(upload_file_to_s3, s3_client, f's3://mufpo-datalake/craw_fund/{now.day}_{now.month}_{now.year}.csv')
+    upload_func = partial(upload_file_to_s3, s3_client, f'arn:aws:s3:::mufpo-datalake/craw_fund/{now.day}_{now.month}_{now.year}.csv')
     print(upload_func('out/result.csv'))
 
 def main():

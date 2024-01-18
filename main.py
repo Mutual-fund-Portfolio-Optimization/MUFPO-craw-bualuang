@@ -43,4 +43,3 @@ def main():
 
 # main()
 upload_file_functional()
-stop_Ec2()

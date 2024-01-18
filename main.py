@@ -41,5 +41,6 @@ def main():
         .to_csv('out/result.csv')
     print('Success!')
 
-# main()
+main()
 upload_file_functional()
+stop_Ec2()

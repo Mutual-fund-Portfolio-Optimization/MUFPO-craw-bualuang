@@ -30,7 +30,7 @@ def upload_file_functional():
     s3_client = create_s3_client()
     now = datetime.datetime.now()
     upload_func = partial(upload_file_to_s3, s3_client, f's3://mufpo-datalake/craw_fund/{now.day}_{now.month}_{now.year}.csv')
-    return upload_func('out/result.csv')
+    print(upload_func('out/result.csv'))
 
 def main():
     cookie_string = cookie(BASE_URL)

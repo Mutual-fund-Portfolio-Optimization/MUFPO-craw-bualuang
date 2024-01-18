@@ -8,7 +8,7 @@ def create_chrome_driver():
     options = Options()
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
-    return webdriver.Chrome(chrome_options=options)
+    return webdriver.Chrome(options=options)
 
 def get_cookie(driver, url: str):
     driver.get(url)

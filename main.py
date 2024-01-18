@@ -19,9 +19,9 @@ def stop_Ec2():
 def create_s3_client():
     return boto3.client('s3')
 
-def upload_file_to_s3(s3_client, bucket_name, file_path):
+def upload_file_to_s3(s3_client, bucket_name, out_path, file_path):
     try:
-        s3_client.upload_file(file_path, bucket_name, file_path.split('/')[-1])
+        s3_client.put_object(Body=file_path, Bucket=bucket_name, Key=out_path)
         return f"File uploaded to {bucket_name}"
     except Exception as e:
         return f"Error uploading file: {e}"
@@ -29,7 +29,7 @@ def upload_file_to_s3(s3_client, bucket_name, file_path):
 def upload_file_functional():
     s3_client = create_s3_client()
     now = datetime.datetime.now()
-    upload_func = partial(upload_file_to_s3, s3_client, f'arn:aws:s3:::mufpo-datalake/craw_fund/{now.day}_{now.month}_{now.year}.csv')
+    upload_func = partial(upload_file_to_s3, s3_client, 'mufpo-datalake',  f'craw_fund/{now.day}_{now.month}_{now.year}.csv')
     print(upload_func('out/result.csv'))
 
 def main():

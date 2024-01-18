@@ -7,7 +7,7 @@ import json
 import boto3
 from functools import partial
 import os
-
+import datetime
 
 ec2_client = boto3.client('ec2', region_name='ap-southeast-1')
 ssm_client = boto3.client('ssm', region_name='ap-southeast-1')
@@ -28,7 +28,8 @@ def upload_file_to_s3(s3_client, bucket_name, file_path):
 
 def upload_file_functional():
     s3_client = create_s3_client()
-    upload_func = partial(upload_file_to_s3, s3_client, 's3://mufpo-datalake/craw_fund/')
+    now = datetime.datetime.now()
+    upload_func = partial(upload_file_to_s3, s3_client, f's3://mufpo-datalake/craw_fund/{now.day}_{now.month}_{now.year}.csv')
     return upload_func('out/result.csv')
 
 def main():
@@ -40,6 +41,6 @@ def main():
         .to_csv('out/result.csv')
     print('Success!')
 
-main()
+# main()
 upload_file_functional()
 stop_Ec2()
